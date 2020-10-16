@@ -19,6 +19,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'issue_id'
       })
 
+      UserIssueComment.belongsTo(models.UserIssue, {
+        foreignKey: 'user_issue_id'
+      })
+
       UserIssueComment.belongsTo(models.Comment, {
         foreignKey: 'comment_id'
       })
@@ -27,6 +31,7 @@ module.exports = (sequelize, DataTypes) => {
   UserIssueComment.init({
     user_id: DataTypes.INTEGER,
     issue_id: DataTypes.INTEGER,
+    user_issue_id: DataTypes.INTEGER,
     comment_id: DataTypes.INTEGER
   }, {
     sequelize,
