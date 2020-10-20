@@ -5,10 +5,6 @@ const jwt = require("jsonwebtoken")
 
 router.get('/', async (req, res) => {
     try {
-        const {token} = req.headers
-
-        await jwt.verify(token, process.env.SECRET, {algorithms: 'HS256'})
-
         let allIssues = []
         const issues = await models.Issue.findAll({
             include: [{
